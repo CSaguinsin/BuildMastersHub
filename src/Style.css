@@ -1,0 +1,65 @@
+
+.Logo{
+    height: 100px;
+    widht: 20px;
+}
+
+
+.Title {
+    font-size: 80px;
+    font-family: 'Chakra Petch', sans-serif;
+    color: #1854EE;
+}
+
+.Second_Title {
+    font-size: 40px;
+    font-family: 'Chakra Petch', sans-serif;
+    color: #1854EE;
+    padding-bottom: 2rem;
+}
+
+.text {
+    font-size: 15px;
+    font-family: 'Chakra Petch', sans-serif;
+    padding-bottom: 2rem;
+}
+
+.puncline {
+    font-size: 50px;
+    font-family: 'Chakra Petch', sans-serif;
+    padding-bottom: 2rem;
+    text-align: center;
+
+}
+
+.About {
+    font-family: 'Chakra Petch', sans-serif;
+    padding-top: 5rem;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between; /* Aligns the children at the start and end of the container */
+    align-items: center; /* Centers items vertically */
+  }
+  
+  .left {
+    flex: 1; /* Allows the left div to take available space */
+    padding-bottom: 8rem;
+  }
+  
+  .right {
+    flex-shrink: 0; /* Prevents the right div from shrinking */
+  }
+
+.Graphic {
+    height: 40rem;
+    widht: 20px;
+    
+}
+
+
+.Section {
+    margin-right: 10rem;
+    margin-left: 5rem;
+}
