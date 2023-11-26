@@ -3,7 +3,7 @@
 ## Table Of Contents 📔
 [About](docs/CONTRIBUTING.md)📑
 [Features](docs/CONTRIBUTING.md)🚀
-[Support](docs/CONTRIBUTING.md)🙏
+[Support]([docs/CONTRIBUTING.md](https://github.com/CSaguinsin/BuildMastersHub#support-))🙏
 
 ## About 📑
 - BuildMasterHub is a project that aims to create a platform for construction and foremen to connect with potential clients, all in a user-friendly and searchable format.
