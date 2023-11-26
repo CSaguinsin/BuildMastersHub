@@ -1,9 +1,11 @@
 👷BuildMasterHub - Discover and Connect with Skilled Construction Workers and Foremens!
+![image](https://github.com/CSaguinsin/BuildMastersHub/assets/123741242/8aa7bdef-0641-4827-bd7a-a1dbb1417946)
 
 ## Table Of Contents 📔
 [About](docs/CONTRIBUTING.md)📑
 [Features](docs/CONTRIBUTING.md)🚀
 [Support]([docs/CONTRIBUTING.md](https://github.com/CSaguinsin/BuildMastersHub#support-))🙏
+
 
 ## About 📑
 - BuildMasterHub is a project that aims to create a platform for construction and foremen to connect with potential clients, all in a user-friendly and searchable format.
