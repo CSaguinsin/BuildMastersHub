@@ -8,14 +8,14 @@ import Navbar from './components/Navbar.jsx';
 
 const App = () => {
   return (
-    <Router>
+    <>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/build-masters-hub" element={<BuildMastersHub />} />
       </Routes>
-    </Router>
+    </>
   )
 }
 

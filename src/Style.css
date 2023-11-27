@@ -23,12 +23,16 @@
     font-family: 'Chakra Petch', sans-serif;
     padding-bottom: 2rem;
 }
-
+.secondtext {
+    font-size: 15px;
+    font-family: 'Chakra Petch', sans-serif;
+}
 .puncline {
-    font-size: 50px;
+    font-size: 40px;
     font-family: 'Chakra Petch', sans-serif;
     padding-bottom: 2rem;
     text-align: center;
+    color: #1854EE;
 
 }
 
@@ -46,6 +50,7 @@
   .left {
     flex: 1; /* Allows the left div to take available space */
     padding-bottom: 8rem;
+    margin-left: 5rem;
   }
   
   .right {
@@ -55,7 +60,11 @@
 .Graphic {
     height: 40rem;
     widht: 20px;
-    
+}
+
+.MiniGraphic{
+    height: 20rem;
+    widht: 20px;
 }
 
 
@@ -63,3 +72,14 @@
     margin-right: 10rem;
     margin-left: 5rem;
 }
+
+.left-right-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .left,
+  .right {
+    flex-basis: 48%; /* Adjust as needed based on your content and margins */
+  }
+  
