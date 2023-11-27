@@ -7,10 +7,12 @@ import Graphic_Design_5 from '../assets/Graphic/Graphic_Design_5.png'
 import Construction from '../assets/Graphic/construction.jpg'
 import Example from '../components/Example'
 import WhyUseThis from '../components/WhyUseThis'
+import Navbar from './Navbar.jsx'
 
 const AboutUs = () => {
   return (
     <>
+          <Navbar />
       <section className='Section'>
             <div className="container">
                 <div className="left">
