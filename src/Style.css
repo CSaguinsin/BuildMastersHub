@@ -88,6 +88,19 @@
     flex-basis: 48%; /* Adjust as needed based on your content and margins */
   }
 
+  /* Add the necessary styles for the initial and animated positions */
+.reveal {
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 0.10s ease-out, transform 0.5s ease-out;
+  }
+  
+  .animate .reveal.slide-in {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+
 
   
   

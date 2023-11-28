@@ -9,6 +9,7 @@ import Example from '../components/Example'
 import WhyUseThis from '../components/WhyUseThis'
 import Navbar from './Navbar.jsx'
 import Me from '../assets/logo/Me.jpg'
+import Footer from '../components/Footer.jsx'
 
 const AboutUs = () => {
   return (
@@ -69,17 +70,18 @@ const AboutUs = () => {
       <section>
         <div className='container'>
             <div className="left">
+            <h1 className='About'>Meet the Founder</h1>
                       <h1 className='Second_Title'>Hi, I'm Carl Saginsin,
                           <br />Creator of BuildMastersHub
                       </h1>
                       <p className='text'>
-                      Hi there, I'm Carl Saginsin, the creator of BuildMastersHub. This platform was brought to life through a fusion of innovative technologies like React, TailwindCSS, Laravel, and Firebase.
+                      Hi there, I'm Carl Saginsin, the founder, developer, and creator of BuildMastersHub. This platform was brought to life through a fusion of innovative technologies like React, TailwindCSS, Laravel, and Firebase.
                      <br></br>
                       <br ></br>
                       BuildMastersHub stands as the quintessential meeting ground for clients and construction professionals alike. It leverages the power of React for its dynamic and responsive user interface, complemented by the sleek styling enabled by TailwindCSS. The robust backend infrastructure, driving seamless operations, is powered by Laravel, while Firebase lends its strength to the platform's real-time features and scalable architecture.
                       <br></br>
                       <br ></br>
-                      It's more than just a platform; it's a bridge that unites visions with the means to bring them to life. Welcome to BuildMastersHub!
+                      It's more than just a platform, it's a bridge that unites visions with the means to bring them to life. Welcome to BuildMastersHub!
                       </p>
             </div>
             <div className='right'>
@@ -247,6 +249,8 @@ const AboutUs = () => {
             </div>
         </div>
       </section>
+
+      <Footer />
     </>
   )
 }
