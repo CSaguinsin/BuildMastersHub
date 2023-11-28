@@ -25,12 +25,13 @@ const BuildMastersHub = () => {
           </a>
         </li>
         <li>
-          <p className='Second_Title'>Discover and Connect with Skilled Developers.</p>
+          <p className='Second_Title'>Discover and Connect with Skilled Professionals.</p>
         </li>
       </ul>
 
     </div>
   </aside>
+  
       <HorizontalCard />
       <br></br>
       <HorizontalCard />

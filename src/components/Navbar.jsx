@@ -29,7 +29,7 @@ function Navbar() {
                 alt="Your Company"
               />
               {/* Mobile menu button */}
-              <Disclosure.Button className="inline-block sm:hidden p-2 text-gray-400 hover:bg-gray-700 hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+              <Disclosure.Button className="inline-block sm:hidden p-2 text-white-400 hover:bg-black-700 hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                 {open ? (
                   <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
                 ) : (
@@ -43,7 +43,7 @@ function Navbar() {
                     key={item.name}
                     href={item.href}
                     className={classNames(
-                      item.current ? 'text-white' : 'text-black hover:bg-gray-700 hover:text-white',
+                      item.current ? 'text-white' : 'text-black hover:bg-black hover:text-white',
                       'rounded-md px-3 py-2 text-sm font-medium'
                     )}
                     aria-current={item.current ? 'page' : undefined}

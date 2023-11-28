@@ -8,7 +8,9 @@ import {
    
   export function HorizontalCard() {
     return (
+      
 <div className="flex justify-center items-center h-full">
+  
       <Card className="w-full max-w-[48rem] flex-row">
         <CardHeader
           shadow={false}
