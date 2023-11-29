@@ -5,6 +5,8 @@ import {
     Typography,
     Button,
   } from "@material-tailwind/react";
+  import NoPic from '../assets/logo/no_pic.jpg'
+  import "../Style.css"
    
   export function HorizontalCard() {
     return (
@@ -18,23 +20,20 @@ import {
           className="m-0 w-2/5 shrink-0 rounded-r-none"
         >
           <img
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
+            src={NoPic}
             alt="card-image"
-            className="h-full w-full object-cover"
+            className="NoPic"
           />
         </CardHeader>
         <CardBody>
-          <Typography variant="h6" color="gray" className="mb-4 uppercase">
-            startups
+          <Typography variant="h10" color="gray" className="mb-4 uppercase">
+            Name:
           </Typography>
-          <Typography variant="h4" color="blue-gray" className="mb-2">
-            Lyft launching cross-platform service this week
+          <Typography variant="h10" color="gray" className="mb-4 uppercase">
+            Contact:
           </Typography>
           <Typography color="gray" className="mb-8 font-normal">
-            Like so many organizations these days, Autodesk is a company in
-            transition. It was until recently a traditional boxed software company
-            selling licenses. Yet its own business model disruption is only part
-            of the story
+            Description:
           </Typography>
           <a href="#" className="inline-block">
             <Button variant="text" className="flex items-center gap-2">

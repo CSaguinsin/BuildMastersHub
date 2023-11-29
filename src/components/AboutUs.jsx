@@ -75,7 +75,7 @@ const AboutUs = () => {
                           <br />Creator of BuildMastersHub
                       </h1>
                       <p className='text'>
-                      Hi there, I'm Carl Saginsin, the founder, developer, and creator of BuildMastersHub. This platform was brought to life through a fusion of innovative technologies like React, TailwindCSS, Laravel, and Firebase.
+                      Hi there, I'm Carl Saginsin, the founder and developer of BuildMastersHub. This platform was brought to life through a fusion of innovative technologies like React, TailwindCSS, Laravel, and Firebase.
                      <br></br>
                       <br ></br>
                       BuildMastersHub stands as the quintessential meeting ground for clients and construction professionals alike. It leverages the power of React for its dynamic and responsive user interface, complemented by the sleek styling enabled by TailwindCSS. The robust backend infrastructure, driving seamless operations, is powered by Laravel, while Firebase lends its strength to the platform's real-time features and scalable architecture.

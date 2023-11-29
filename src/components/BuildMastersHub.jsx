@@ -3,6 +3,7 @@ import { HorizontalCard } from './HorizontalCard'
 import Logo from '../assets/logo/Light_Mode.png'
 import { Link } from 'react-router-dom'
 import '../Style.css'
+import SearchBar from './SearchBar'
 
 const BuildMastersHub = () => {
   return (
@@ -31,7 +32,9 @@ const BuildMastersHub = () => {
 
     </div>
   </aside>
-  
+    <SearchBar />
+    <br></br>
+    <br></br>
       <HorizontalCard />
       <br></br>
       <HorizontalCard />
