@@ -34,16 +34,12 @@ const BuildMastersHub = () => {
   </aside>
     <SearchBar />
     <br></br>
-    <br></br>
-      <HorizontalCard />
-      <br></br>
-      <HorizontalCard />
-      <br></br>
-      <HorizontalCard />
-      <br></br>
-      <HorizontalCard />
-      <br></br>
-      <HorizontalCard />
+    {[1, 2, 3, 4, 5].map((index) => (
+        <React.Fragment key={index}>
+          <HorizontalCard />
+          <br />
+        </React.Fragment>
+      ))}
     </>
   )
 }
