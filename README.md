@@ -10,8 +10,7 @@
 ## About 📑
 - BuildMasterHub is a project that aims to create a platform for construction and foremen to connect with potential clients, all in a user-friendly and searchable format.
 *  BuildMasterHub aims to bridge the gap between talent and opportunity within the construction realm, fostering a collaborative ecosystem where craftsmanship meets demand. By leveraging technology to streamline the process of showcasing skills and networking, this platform aspires to redefine how professionals in the construction field interact, collaborate, and thrive in a competitive market.
-*  This web app is created using the latest technologies of the market like Vite, React javascript and TailwindCSS and it was deployed on Vercel.
-
+*  This web app is created using the latest technologies React javascript and TailwindCSS and on the backend is Firebase
 ## Features 🚀
 - You can search Foremen and Construction workers by the search tab and also see there profile and works
 * Clients can also see the Name, Location and the Description of the professional
