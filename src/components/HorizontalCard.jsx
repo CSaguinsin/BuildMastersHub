@@ -1,3 +1,4 @@
+import React from "react";
 import {
     Card,
     CardHeader,
@@ -7,6 +8,7 @@ import {
   } from "@material-tailwind/react";
   import NoPic from '../assets/logo/no_pic.jpg'
   import "../Style.css"
+  import { Link } from "react-router-dom";
    
   export function HorizontalCard() {
     return (
@@ -35,6 +37,7 @@ import {
           <Typography color="gray" className="mb-8 font-normal">
             Description:
           </Typography>
+          <Link to='/profile'>
           <a href="#" className="inline-block">
             <Button variant="text" className="flex items-center gap-2">
               Learn More
@@ -54,6 +57,7 @@ import {
               </svg>
             </Button>
           </a>
+          </Link>
         </CardBody>
       </Card>
 </div>
