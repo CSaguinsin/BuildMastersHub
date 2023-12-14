@@ -1,10 +1,41 @@
 import React from 'react'
+import { useState } from 'react'
 import Logo from '../assets/logo/Light_Mode.png'
 import { Link } from 'react-router-dom'
-import Navbar from './Navbar'
+import Navbar from '../components/Navbar'
+import { createUserWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
+import { auth, googleProvider } from '../config/firebase'
+import '../Style.css'
 
 
-const LogIn = () => {
+
+const SignUp = () => {
+
+  const [firstname, setFirstname] = useState("")
+  const [lastname, setLastname] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const signIn = async () => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      // Once the account is created successfully, update the display name
+      await updateProfile(userCredential.user, {
+        displayName: `${firstname} ${lastname}`
+      });
+      // Optionally, you can do something after successful account creation
+      console.log("Account created successfully!");
+    } catch (error) {
+      // Handle error (log it, display an error message, etc.)
+      console.error("Error creating user:", error);
+    }
+  };
+
+  const signInWithGoogle = async () => {
+    await signInWithPopup(auth, googleProvider) 
+  };
+
+
   return (
     <>  
         <Navbar />
@@ -28,9 +59,10 @@ const LogIn = () => {
               </label>
               <div className="mt-2">
                 <input
+                  onChange={(e) => setFirstname(e.target.value)}
                   id="email"
                   name="email"
-                  type="email"
+                  type="name"
                   autoComplete="email"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -49,10 +81,11 @@ const LogIn = () => {
               </div>
               <div className="mt-2">
                 <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
+                  onChange={(e) => setLastname(e.target.value)}  
+                  id="email"
+                  name="email"
+                  type="name"
+                  autoComplete="email"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -69,10 +102,11 @@ const LogIn = () => {
               </div>
               <div className="mt-2">
                 <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  autoComplete="current-password"
+                  onChange={(e) => setEmail(e.target.value)}
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
@@ -92,6 +126,7 @@ const LogIn = () => {
               </div>
               <div className="mt-2">
                 <input
+                  onChange={(e) => setPassword(e.target.value)}
                   id="password"
                   name="password"
                   type="password"
@@ -104,6 +139,7 @@ const LogIn = () => {
 
             <div>
               <button
+              onClick={signIn}
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
@@ -124,4 +160,4 @@ const LogIn = () => {
   )
 }
 
-export default LogIn
+export default SignUp

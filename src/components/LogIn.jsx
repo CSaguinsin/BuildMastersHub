@@ -9,7 +9,7 @@ import '../Style.css'
 
 
 const LogIn = () => {
-
+  
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
