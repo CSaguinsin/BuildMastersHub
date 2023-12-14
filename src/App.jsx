@@ -6,6 +6,8 @@ import BuildMastersHub from './components/BuildMastersHub.jsx'
 import Navbar from './components/Navbar.jsx';
 import Profile from './components/profile/Profile.jsx';
 import LogIn from './components/LogIn.jsx';
+import SignUp from './components/SignUp.jsx';
+
 
 
 
@@ -18,6 +20,7 @@ const App = () => {
         <Route path="/build-masters-hub" element={<BuildMastersHub />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<LogIn />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </>
   )
