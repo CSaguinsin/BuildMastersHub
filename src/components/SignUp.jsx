@@ -1,40 +1,39 @@
-import React from 'react'
-import { useState } from 'react'
-import Logo from '../assets/logo/Light_Mode.png'
-import { Link } from 'react-router-dom'
-import Navbar from '../components/Navbar'
-import { createUserWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
-import { auth, googleProvider } from '../config/firebase'
-import '../Style.css'
-
-
+import React from 'react';
+import { useState } from 'react';
+import Logo from '../assets/logo/Light_Mode.png';
+import { Link } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import { createUserWithEmailAndPassword } from 'firebase/auth'; // Fixed import
+import { auth, googleProvider } from '../config/firebase';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import '../Style.css';
+import BuildMastersHub from '../components/BuildMastersHub';
 
 const SignUp = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [
+    createUserWithEmailAndPassword,
+    user,
+    loading,
+    error,
+  ] = useCreateUserWithEmailAndPassword(auth);
 
-  const [firstname, setFirstname] = useState("")
-  const [lastname, setLastname] = useState("")
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-
-  const signIn = async () => {
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      // Once the account is created successfully, update the display name
-      await updateProfile(userCredential.user, {
-        displayName: `${firstname} ${lastname}`
-      });
-      // Optionally, you can do something after successful account creation
-      console.log("Account created successfully!");
-    } catch (error) {
-      // Handle error (log it, display an error message, etc.)
-      console.error("Error creating user:", error);
-    }
-  };
-
-  const signInWithGoogle = async () => {
-    await signInWithPopup(auth, googleProvider) 
-  };
-
+  if (error) {
+    return (
+      <div>
+        <p>Error: {error.message}</p>
+      </div>
+    );
+  }
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (user) {
+    return (
+        <BuildMastersHub />
+    );
+  }
 
   return (
     <>  
@@ -53,26 +52,25 @@ const SignUp = () => {
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form className="space-y-6" action="#" method="POST">
-            <div>
+            {/* <div>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 First Name
               </label>
               <div className="mt-2">
                 <input
-                  onChange={(e) => setFirstname(e.target.value)}
-                  id="email"
-                  name="email"
+                  onSubmit={handleSubmit}
+                  id="firstname"
+                  name="firstname"
                   type="name"
-                  autoComplete="email"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
-            </div>
+            </div> */}
 
             
             <div>
-              <div className="flex items-center justify-between">
+              {/* <div className="flex items-center justify-between">
                 <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
                   Last Name
                 </label>
@@ -81,15 +79,14 @@ const SignUp = () => {
               </div>
               <div className="mt-2">
                 <input
-                  onChange={(e) => setLastname(e.target.value)}  
-                  id="email"
-                  name="email"
+                  onSubmit={handleSubmit}
+                  id="lastname"
+                  name="lastname"
                   type="name"
-                  autoComplete="email"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
-              </div>
+              </div> */}
             </div>
 
             <div>
@@ -102,12 +99,12 @@ const SignUp = () => {
               </div>
               <div className="mt-2">
                 <input
-                  onChange={(e) => setEmail(e.target.value)}
                   id="email"
                   name="email"
                   type="email"
                   autoComplete="email"
-                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -126,12 +123,9 @@ const SignUp = () => {
               </div>
               <div className="mt-2">
                 <input
-                  onChange={(e) => setPassword(e.target.value)}
-                  id="password"
-                  name="password"
                   type="password"
-                  autoComplete="current-password"
-                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>
@@ -139,7 +133,7 @@ const SignUp = () => {
 
             <div>
               <button
-              onClick={signIn}
+                onClick={() => createUserWithEmailAndPassword(email, password)}
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
