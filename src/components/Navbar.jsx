@@ -8,7 +8,7 @@ import "../Style.css"
 const navigation = [
   { name: 'Home', href: '/', current: false },
   { name: 'About', href: '/about-us', current: false },
-  { name: 'Contact Us', href: '/build-masters-hub', current: false },
+  { name: 'Contact Us', href: '/contact-us', current: false },
 ]
 
 function classNames(...classes) {
