@@ -1,5 +1,6 @@
 👷BuildMasterHub - Discover and Connect with Skilled Construction Workers and Foremens!
-![image](https://github.com/CSaguinsin/BuildMastersHub/assets/123741242/8aa7bdef-0641-4827-bd7a-a1dbb1417946)
+![image](https://github.com/CSaguinsin/BuildMastersHub/assets/123741242/952c72a1-9376-49d8-8976-a697d56eb6b3)
+
 
 ## Table Of Contents 📔
 [About](docs/CONTRIBUTING.md)📑
