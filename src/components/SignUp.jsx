@@ -4,7 +4,7 @@ import Logo from '../assets/logo/Light_Mode.png';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { createUserWithEmailAndPassword } from 'firebase/auth'; // Fixed import
-import { auth, googleProvider } from '../config/firebase';
+import { auth, googleProvider } from '../config/firebase'
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import '../Style.css';
 import BuildMastersHub from '../components/BuildMastersHub';
@@ -12,6 +12,9 @@ import BuildMastersHub from '../components/BuildMastersHub';
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const signInWithGoogle = async () => {
+    await signInWithPopup(auth, googleProvider) 
+  };
   const [
     createUserWithEmailAndPassword,
     user,
@@ -137,8 +140,16 @@ const SignUp = () => {
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
-                Sign in
+                Create account
               </button>
+              <br />
+              <button
+                onClick={signInWithGoogle}
+                type="submit"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Sign in with Google
+          </button>
             </div>
           </form>
 
