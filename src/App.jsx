@@ -9,8 +9,6 @@ import LogIn from './components/LogIn.jsx';
 import SignUp from './components/SignUp.jsx';
 import ContactUs from './components/ContactUs.jsx';
 
-
-
 const App = () => {
   return (
     <>
