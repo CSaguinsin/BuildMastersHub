@@ -7,6 +7,14 @@ import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
 import { auth, googleProvider } from '../config/firebase'
 import '../Style.css'
 
+import {
+  Input,
+  Ripple,
+  initTE,
+} from "tw-elements";
+
+initTE({ Input, Ripple });
+
 
 const LogIn = () => {
   
