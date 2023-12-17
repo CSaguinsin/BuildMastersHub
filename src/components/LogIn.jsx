@@ -1,32 +1,47 @@
-import React from 'react'
-import { useState } from 'react'
-import Logo from '../assets/logo/Light_Mode.png'
-import { Link } from 'react-router-dom'
-import Navbar from '../components/Navbar'
-import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth'
-import { auth, googleProvider } from '../config/firebase'
-import '../Style.css'
-
-import {
-  Input,
-  Ripple,
-  initTE,
-} from "tw-elements";
-
-initTE({ Input, Ripple });
-
+import React, { useState } from 'react';
+import Logo from '../assets/logo/Light_Mode.png';
+import { Link, useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import {  signInWithEmailAndPassword   } from 'firebase/auth';
+import { auth, googleProvider } from '../config/firebase';
+import login from '../assets/Graphic/login.png'
+import '../Style.css';
 
 const LogIn = () => {
-  
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+     
+  const onLogin = (e) => {
+      e.preventDefault();
+      signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          navigate("/build-masters-hub")
+          console.log(user);
+      })
+      .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorCode, errorMessage)
+      });
+  }
 
-  const signIn = async () => {
-    await createUserWithEmailAndPassword(auth, email, password) 
-  };
-
-  const signInWithGoogle = async () => {
-    await signInWithPopup(auth, googleProvider) 
+  const signInWithGoogle = () => {
+    // Sign in with Google using Firebase's signInWithPopup method
+    signInWithPopup(auth, googleProvider)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        navigate("/home");
+        console.log(user);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
   };
   
   return (
@@ -52,7 +67,7 @@ const LogIn = () => {
               </label>
               <div className="mt-2">
                 <input
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e)=>setEmail(e.target.value)}
                   id="email"
                   name="email"
                   type="email"
@@ -76,7 +91,7 @@ const LogIn = () => {
               </div>
               <div className="mt-2">
                 <input
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e)=>setPassword(e.target.value)}
                   id="password"
                   name="password"
                   type="password"
@@ -89,7 +104,7 @@ const LogIn = () => {
 
             <div>
               <button
-                onClick={signIn}
+                onClick={onLogin}
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >

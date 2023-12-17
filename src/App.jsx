@@ -10,6 +10,8 @@ import SignUp from './components/SignUp.jsx';
 import ContactUs from './components/ContactUs.jsx';
 import Log from './components/Log.jsx';
 
+import SignIn from './components/SignIn.jsx';
+
 const App = () => {
   return (
     <>
@@ -18,7 +20,7 @@ const App = () => {
         <Route path="/about-us" element={<AboutUs />} />
         <Route path="/build-masters-hub" element={<BuildMastersHub />} />
         <Route path="/profile" element={<Profile />} />
-        <Route path="/login" element={<LogIn />} />
+        <Route path="/login" element={<SignIn />} />
         <Route path="/signup" element={<Log />} />
         <Route path="/contact-us" element={<ContactUs />} />
       </Routes>
