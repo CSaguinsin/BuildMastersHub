@@ -11,7 +11,18 @@ import Navbar from './Navbar.jsx'
 import Me from '../assets/logo/Me.jpg'
 import Footer from '../components/Footer.jsx'
 
-const AboutUs = () => {
+const Things = () => {
+  const title = "Welcome to BuildMastersHub,\nthe innovative web app connecting construction professionals with clients!";
+  const text = "At BuildMasterHub, we understand the importance of showcasing talent in the construction industry. Whether you're a seasoned professional with years of experience or a skilled artisan looking to expand your network, our platform offers a seamless solution to exhibit your skills and expertise.\nOur mission is simple: to bridge the gap between talented construction professionals and clients seeking their expertise. By creating a user-friendly and interactive space, we aim to foster meaningful connections that benefit both parties.";
+  const meet = "Meet the Founder";
+  const intro = "Hi, I'm Carl Saginsin 👾";
+  const paragraph = "the founder and developer of BuildMastersHub. Our platform embodies the fusion of innovative technologies like React, TailwindCSS, and Firebase.\nBuildMastersHub serves as a dynamic hub for clients and construction professionals, facilitating seamless connections. We utilize React for its dynamic user interface, enhanced by the stylish elements of TailwindCSS. Firebase plays a pivotal role in empowering real-time features and ensuring a scalable architecture, while driving the backend operations.";
+  return (
+    <AboutUs title={title} text={text} meet={meet} intro={intro} paragraph={paragraph} />
+) ; 
+};
+
+const AboutUs = (props) => {
   return (
     <>
           <Navbar />
@@ -19,16 +30,8 @@ const AboutUs = () => {
             <div className="container">
                 <div className="left">
                   <h1 className='About'>About Us</h1>
-                  <h1 className='Second_Title'>Welcome to BuildMastersHub,
-                      <br />the innovative web app 
-                      connecting construction 
-                      professionals with clients! 
-                  </h1>
-                  <p className='text'>
-                  At BuildMasterHub, we understand the importance of showcasing talent in the construction industry. Whether you're a seasoned professional with years of experience or a skilled artisan looking to expand your network, our platform offers a seamless solution to exhibit your skills and expertise. <br /> 
-                  <br ></br>
-                  Our mission is simple: to bridge the gap between talented construction professionals and clients seeking their expertise. By creating a user-friendly and interactive space, we aim to foster meaningful connections that benefit both parties.
-                  </p>
+                  <h1 className='Second_Title'>{props.title}</h1>
+                  <p className='text'>{props.text}</p>
                 </div>
                 <div className="right">
                   <img src={Graphic_Design_2} alt="Graphic Design" className='Graphic'/>
@@ -54,13 +57,10 @@ const AboutUs = () => {
       <section>
         <div className='container'>
             <div className="left">
-            <h1 className='About'>Meet the Founder</h1>
-                      <h1 className='Second_Title'>Hi, I'm Carl Saginsin 👾
-                          <br />Creator of BuildMastersHub
-                      </h1>
+            <h1 className='About'>{props.meet}</h1>
+                      <h1 className='Second_Title'>{props.intro}</h1>
                       <p className='text'>
-                      {/* Hello, I'm Carl Saginsin, the founder and developer of BuildMastersHub. Our platform embodies the fusion of innovative technologies like React, TailwindCSS, and Firebase. */}
-                      BuildMastersHub serves as a dynamic hub for clients and construction professionals, facilitating seamless connections. We utilize React for its dynamic user interface, enhanced by the stylish elements of TailwindCSS. Firebase plays a pivotal role in empowering real-time features and ensuring a scalable architecture, while driving the backend operations.
+                      {props.paragraph}
                       <br></br>
                       <br ></br>
                       It's more than a platform, it's a conduit that unites visions with the tools to materialize them. Welcome to BuildMastersHub!
@@ -172,4 +172,4 @@ const AboutUs = () => {
   )
 }
 
-export default AboutUs
+export default Things;
