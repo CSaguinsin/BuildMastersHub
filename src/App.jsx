@@ -9,7 +9,7 @@ import LogIn from './components/LogIn.jsx';
 import SignUp from './components/SignUp.jsx';
 import ContactUs from './components/ContactUs.jsx';
 import Log from './components/Log.jsx';
-
+import Donate from './components/Donate.jsx';
 import SignIn from './components/SignIn.jsx';
 
 const App = () => {
@@ -23,6 +23,7 @@ const App = () => {
         <Route path="/login" element={<SignIn />} />
         <Route path="/signup" element={<Log />} />
         <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/donate" element={<Donate />} />
       </Routes>
     </>
   )
