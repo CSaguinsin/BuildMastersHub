@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import { useState } from 'react';
 import { HorizontalCard } from './HorizontalCard'
 import Logo from '../assets/logo/Light_Mode.png'
 import { Link } from 'react-router-dom'
@@ -6,8 +7,37 @@ import '../Style.css'
 import SearchBar from './SearchBar'
 import foremen from '../assets/Icons/foreman.png'
 import construction from '../assets/Icons/construction.png'
+import {  signOut } from "firebase/auth";
+import { auth } from '../config/firebase'
+import { useNavigate } from 'react-router-dom';
+import Loading from '../components/Loading';
 
 const BuildMastersHub = () => {
+
+  const navigate = useNavigate();
+  const [loggingOut, setLoggingOut] = useState(false);
+
+  const handleLogout = () => {
+    setLoggingOut(true); // Set the state to indicate logging out
+
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        setTimeout(() => {
+          setLoggingOut(false); // Set the state to indicate logout is done
+          navigate("/");
+        }, 2000); // Simulating a 2-second delay for demonstration (you can remove this in your actual implementation)
+      })
+      .catch((error) => {
+        // Handle logout error
+        setLoggingOut(false); // Set the state to indicate logout is done
+        // Handle error accordingly
+      });
+  };
+
+  if (loggingOut) {
+    return <Loading />; // Display the Loading component while logging out
+  }
   
   return (
     <>
@@ -58,6 +88,7 @@ const BuildMastersHub = () => {
         </a>
       </li>
       <li>
+      <button onClick={handleLogout}>
         <a
           href="#"
           className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -76,9 +107,11 @@ const BuildMastersHub = () => {
               strokeWidth={2}
               d="M1 8h11m0 0L8 4m4 4-4 4m4-11h3a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-3"
             />
+           
           </svg>
           <span className="flex-1 ms-3 whitespace-nowrap">Log Out</span>
         </a>
+        </button>
       </li>
     </ul>
     <ul className="pt-4 mt-4 space-y-2 font-medium border-t border-black dark:border-gray-700">
