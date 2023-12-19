@@ -116,11 +116,14 @@ const Profile = () => {
         </React.Fragment>
       ))}
       </div>
+      <br />
+      <br />
         <div>
           {comments.map((commentData) => (
             <div key={commentData.id}>
               <p>
                 <strong>{commentData.userName}: </strong>
+                <br />
                 {commentData.commentText}
               </p>
             </div>

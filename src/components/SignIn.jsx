@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Logo from '../assets/logo/Light_Mode.png';
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
-import {  signInWithEmailAndPassword   } from 'firebase/auth';
+import {  signInWithEmailAndPassword, signInWithPopup   } from 'firebase/auth';
 import { auth, googleProvider } from '../config/firebase';
 import login from '../assets/Graphic/login.png'
 import '../Style.css';
@@ -27,14 +27,18 @@ const SignIn = () => {
             console.log(errorCode, errorMessage)
         });
     }
-  
+
+    const handleGoogleSignIn = async () => {
+      await signInWithGoogle();
+    };
+    
     const signInWithGoogle = () => {
       // Sign in with Google using Firebase's signInWithPopup method
       signInWithPopup(auth, googleProvider)
         .then((userCredential) => {
           // Signed in
           const user = userCredential.user;
-          navigate("/home");
+          navigate("/build-masters-hub");
           console.log(user);
         })
         .catch((error) => {
@@ -151,6 +155,7 @@ const SignIn = () => {
               role="button"
               data-te-ripple-init=""
               data-te-ripple-color="light"
+              onClick={handleGoogleSignIn} // Attach onClick event
             >
               {/* Facebook */}
               <svg

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { HorizontalCard } from './HorizontalCard'
+import HorizontalCard from './HorizontalCard';
 import Logo from '../assets/logo/Light_Mode.png'
 import { Link } from 'react-router-dom'
 import '../Style.css'
@@ -41,7 +41,7 @@ const BuildMastersHub = () => {
   
   return (
     <>
-<aside
+{/* <aside
   id="separator-sidebar"
   className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
   aria-label="Sidebar"
@@ -58,6 +58,7 @@ const BuildMastersHub = () => {
         </a>
       
       <li>
+        <button onClick={() => handleTabClick('Foreman')}>
         <a
           href="#"
           className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -71,6 +72,7 @@ const BuildMastersHub = () => {
             <path d="M14 2a3.963 3.963 0 0 0-1.4.267 6.439 6.439 0 0 1-1.331 6.638A4 4 0 1 0 14 2Zm1 9h-1.264A6.957 6.957 0 0 1 15 15v2a2.97 2.97 0 0 1-.184 1H19a1 1 0 0 0 1-1v-1a5.006 5.006 0 0 0-5-5ZM6.5 9a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9ZM8 10H5a5.006 5.006 0 0 0-5 5v2a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1v-2a5.006 5.006 0 0 0-5-5Z" />
           <span className="flex-1 ms-3 whitespace-nowrap">Foremen</span>
         </a>
+        </button>
       </li>
       <li>
         <a
@@ -170,16 +172,11 @@ const BuildMastersHub = () => {
       </Link>
     </ul>
   </div>
-</aside>
+</aside> */}
 
     <SearchBar />
     <br></br>
-    {[1, 2, 3, 4, 5].map((index) => (
-        <React.Fragment key={index}>
-          <HorizontalCard />
-          <br />
-        </React.Fragment>
-      ))}
+    <HorizontalCard />
     </>
   )
 }
