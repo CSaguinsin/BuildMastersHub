@@ -11,6 +11,7 @@ import {
 } from 'firebase/firestore';
 import NoPic from '../../assets/logo/no_pic.jpg';
 import '../../Style.css';
+import imageholderf from '../../assets/Graphic/imageplaceholder.png';
 
 const Profile = () => {
   const [comment, setComment] = useState('');
@@ -105,6 +106,15 @@ const Profile = () => {
             </dd>
           </div> 
         </dl>
+      </div>
+      <h1>Works</h1>
+      <div className='imageholder'>
+          {[1, 2, 3].map((index) => (
+        <React.Fragment key={index}>
+          <img src={imageholderf} className='imageholderf'/>
+          <br />
+        </React.Fragment>
+      ))}
       </div>
         <div>
           {comments.map((commentData) => (
