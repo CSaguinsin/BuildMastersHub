@@ -29,9 +29,21 @@ const HorizontalCard = () => {
       id: 2,
       name: 'Carl Saguinsin',
       contact: '...',
+      job: 'Foreman',
+    },
+    {
+      id: 3,
+      name: 'Jb Guinabo',
+      contact: '...',
       job: 'Construction Worker',
     },
-    // Add more people data as needed
+    {
+      id: 4,
+      name: 'Cedrick Selerio',
+      contact: '...',
+      job: 'Construction Worker',
+    },
+    
   ]);
 
   const handleLogout = () => {

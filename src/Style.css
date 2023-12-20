@@ -1,3 +1,68 @@
+/* For 480x800, 640x1136 */
+@media screen and (max-width: 360px) {
+  /* Adjust styles for smaller screens */
+  .Section {
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+  .Title {
+    font-size: 36px;
+    text-align: center;
+  }
+  .text {
+    font-size: 12px;
+    text-align: center;
+  }
+  /* Adjust other styles as needed */
+}
+
+/* For 720x1280, 750x1334 */
+@media screen and (min-width: 361px) and (max-width: 414px) {
+  /* Styles for screens between 361px and 414px width */
+  .Section {
+    margin-right: 2rem;
+    margin-left: 2rem;
+  }
+  .Title {
+    font-size: 36px;
+    text-align: center;
+  }
+  .text {
+    font-size: 12px;
+    text-align: center;
+  }
+  /* Adjust other styles as needed */
+}
+
+/* For 1080x1920 */
+@media screen and (min-width: 415px) and (max-width: 768px) {
+  /* Styles for screens between 415px and 768px width */
+  .Section {
+    margin-right: 3rem;
+    margin-left: 3rem;
+  }
+  /* Adjust other styles as needed */
+}
+
+/* For 1440x2560 and larger */
+@media screen and (min-width: 769px) {
+  /* Styles for screens wider than 768px */
+  .Section {
+    margin-right: 5rem;
+    margin-left: 5rem;
+  }
+  .Title {
+    font-size: 36px;
+    text-align: center;
+  }
+  .text {
+    font-size: 12px;
+    text-align: center;
+  }
+  /* Adjust other styles as needed */
+}
+
+
 .NoPic {
     height: 16rem;
 }
