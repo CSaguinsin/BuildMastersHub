@@ -14,6 +14,7 @@ import Logo from '../assets/logo/Light_Mode.png';
 import foremen from '../assets/Icons/foreman.png';
 import construction from '../assets/Icons/construction.png';
 import Loading from '../components/Loading';
+import { db } from "../config/firebase";
 
 const HorizontalCard = () => {
   const navigate = useNavigate();

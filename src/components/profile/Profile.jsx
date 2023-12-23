@@ -14,22 +14,13 @@ import '../../Style.css';
 import imageholderf from '../../assets/Graphic/imageplaceholder.png';
 
 
-const ParentComponent = () => {
-  // Retrieve userId, maybe from a context, state, or props
-  const userId = 1 // Retrieve the userId
-
-  return (
-    <div>
-      {/* Pass the userId as a prop to Profile */}
-      <Profile userId={userId} />
-    </div>
-  );
-};
 
 
-const Profile = ({ userId }) => {
+
+
+const Profile = ({ user }) => {
   const [comment, setComment] = useState('');
-  const [userName, setUserName] = useState(''); // New state for user's name
+  const [userName, setUserName] = useState(''); // Added state for user's name
   const [comments, setComments] = useState([]);
   let unsubscribe;
 
@@ -44,16 +35,11 @@ const Profile = ({ userId }) => {
   const handleSubmitComment = async (event) => {
     event.preventDefault();
   
-    if (!userId) {
-      console.error('Error adding comment: userId is undefined');
-      return;
-    }
-  
     const db = getFirestore();
   
     try {
       const docRef = await addDoc(collection(db, 'comments'), {
-        userId,
+        userName: userName || (user && user.displayName) || 'Anonymous',
         commentText: comment,
         timestamp: Timestamp.now(),
       });
@@ -61,6 +47,7 @@ const Profile = ({ userId }) => {
       console.log('Comment added with ID: ', docRef.id);
   
       setComment('');
+      setUserName(''); // Clear the user name after submitting
     } catch (error) {
       console.error('Error adding comment: ', error);
     }
@@ -152,8 +139,8 @@ const Profile = ({ userId }) => {
       <br />
       <br />
       <div>
-      {comments
-  .filter((commentData) => commentData.userId === userId)
+{comments
+  .filter((commentData) => commentData.userId === commentData.userId)
   .map((commentData) => (
     <div key={commentData.id}>
       <p>
