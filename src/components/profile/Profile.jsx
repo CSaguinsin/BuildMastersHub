@@ -13,7 +13,21 @@ import NoPic from '../../assets/logo/no_pic.jpg';
 import '../../Style.css';
 import imageholderf from '../../assets/Graphic/imageplaceholder.png';
 
-const Profile = () => {
+
+const ParentComponent = () => {
+  // Retrieve userId, maybe from a context, state, or props
+  const userId = 1 // Retrieve the userId
+
+  return (
+    <div>
+      {/* Pass the userId as a prop to Profile */}
+      <Profile userId={userId} />
+    </div>
+  );
+};
+
+
+const Profile = ({ userId }) => {
   const [comment, setComment] = useState('');
   const [userName, setUserName] = useState(''); // New state for user's name
   const [comments, setComments] = useState([]);
@@ -29,25 +43,29 @@ const Profile = () => {
 
   const handleSubmitComment = async (event) => {
     event.preventDefault();
-
+  
+    if (!userId) {
+      console.error('Error adding comment: userId is undefined');
+      return;
+    }
+  
     const db = getFirestore();
-
+  
     try {
       const docRef = await addDoc(collection(db, 'comments'), {
-        userName, // Include user's name in the comment object
+        userId,
         commentText: comment,
         timestamp: Timestamp.now(),
       });
-
+  
       console.log('Comment added with ID: ', docRef.id);
-
+  
       setComment('');
-      setUserName('');
     } catch (error) {
       console.error('Error adding comment: ', error);
     }
   };
-
+  
   useEffect(() => {
     const fetchComments = async () => {
       const db = getFirestore();
@@ -71,6 +89,21 @@ const Profile = () => {
       }
     };
   }, []);
+
+  const fetchComments = async () => {
+    const db = getFirestore();
+    const commentsRef = collection(db, 'comments');
+    const q = query(commentsRef, where('userId', '==', userId), orderBy('timestamp', 'desc'));
+  
+    unsubscribe = onSnapshot(q, (snapshot) => {
+      const commentsData = [];
+      snapshot.forEach((doc) => {
+        commentsData.push({ id: doc.id, ...doc.data() });
+      });
+      setComments(commentsData);
+    });
+  };
+  
 
 
   return (
@@ -118,16 +151,18 @@ const Profile = () => {
       </div>
       <br />
       <br />
-        <div>
-          {comments.map((commentData) => (
-            <div key={commentData.id}>
-              <p>
-                <strong>{commentData.userName}: </strong>
-                <br />
-                {commentData.commentText}
-              </p>
-            </div>
-          ))}
+      <div>
+      {comments
+  .filter((commentData) => commentData.userId === userId)
+  .map((commentData) => (
+    <div key={commentData.id}>
+      <p>
+        <strong>{commentData.userName}: </strong>
+        <br />
+        {commentData.commentText}
+      </p>
+    </div>
+  ))}
         </div>
         <br />
         <br />
