@@ -6,90 +6,116 @@ import {
   addDoc,
   Timestamp,
   query,
+  where,
   orderBy,
   onSnapshot,
 } from 'firebase/firestore';
 import NoPic from '../../assets/logo/no_pic.jpg';
 import '../../Style.css';
 import imageholderf from '../../assets/Graphic/imageplaceholder.png';
+import {
+  collection as firestoreCollection,
+  addDoc as firestoreAddDoc,
+  serverTimestamp as firestoreTimestamp,
+  query as firestoreQuery,
+  where as firestoreWhere,
+  orderBy as firestoreOrderBy,
+  onSnapshot as firestoreOnSnapshot, // Aliasing onSnapshot to firestoreOnSnapshot
+} from 'firebase/firestore';
 
 
+const Profile = ({ user, profileUserId }) => {
+  // const [comment, setComment] = useState('');
+  // const [userName, setUserName] = useState('');
+  // const [comments, setComments] = useState([]);
+  // let unsubscribe;
 
+  // const userId = user?.uid || 'defaultUserId';
 
+  // const handleCommentChange = (event) => {
+  //   setComment(event.target.value);
+  // };
 
+  // const handleNameChange = (event) => {
+  //   setUserName(event.target.value);
+  // };
 
-const Profile = ({ user }) => {
-  const [comment, setComment] = useState('');
-  const [userName, setUserName] = useState(''); // Added state for user's name
-  const [comments, setComments] = useState([]);
-  let unsubscribe;
+  // const handleSubmitComment = async (event) => {
+  //   event.preventDefault();
 
-  const handleCommentChange = (event) => {
-    setComment(event.target.value);
-  };
+  //   const db = getFirestore();
 
-  const handleNameChange = (event) => {
-    setUserName(event.target.value);
-  };
+  //   try {
+  //     await addDoc(collection(db, 'comments'), {
+  //       userId: userId,
+  //       userName: userName || (user && user.displayName) || 'Anonymous',
+  //       commentText: comment,
+  //       timestamp: Timestamp.now(),
+  //     });
 
-  const handleSubmitComment = async (event) => {
-    event.preventDefault();
+  //     // Clear input fields after submitting comment
+  //     setUserName('');
+  //     setComment('');
+
+  //     // Optionally, fetch comments again after adding a new one
+  //     fetchComments();
+  //   } catch (error) {
+  //     console.error('Error adding comment: ', error);
+  //   }
+  // };
+
+  // const fetchComments = async () => {
+  //   if (user) {
+  //     const db = getFirestore();
+  //     const commentsRef = collection(db, 'comments');
+  //     const q = query(
+  //       commentsRef,
+  //       where('userId', '==', user.uid),
+  //       orderBy('timestamp', 'desc')
+  //     );
+
+  //     unsubscribe = onSnapshot(q, (snapshot) => {
+  //       const commentsData = [];
+  //       snapshot.forEach((doc) => {
+  //         commentsData.push({ id: doc.id, ...doc.data() });
+  //       });
+  //       setComments(commentsData);
+  //       console.log('Fetched comments:', commentsData); // Add this log to check fetched comments
+  //     });
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   const fetchComments = async () => {
+  //     if (user) {
+  //       const db = getFirestore();
+  //       const commentsRef = collection(db, 'comments');
+  //       const q = query(
+  //         commentsRef,
+  //         where('userId', '==', user.uid),
+  //         orderBy('timestamp', 'desc')
+  //       );
   
-    const db = getFirestore();
+  //       unsubscribe = onSnapshot(q, (snapshot) => {
+  //         const commentsData = [];
+  //         snapshot.forEach((doc) => {
+  //           commentsData.push({ id: doc.id, ...doc.data() });
+  //         });
+  //         setComments(commentsData);
+  //         console.log('Fetched comments:', commentsData); // Add this log to check fetched comments
+  //       });
+  //     }
+  //   };
   
-    try {
-      const docRef = await addDoc(collection(db, 'comments'), {
-        userName: userName || (user && user.displayName) || 'Anonymous',
-        commentText: comment,
-        timestamp: Timestamp.now(),
-      });
+  //   fetchComments();
   
-      console.log('Comment added with ID: ', docRef.id);
+  //   return () => {
+  //     if (unsubscribe instanceof Function) {
+  //       unsubscribe();
+  //     }
+  //   };
+  // }, [user]);
   
-      setComment('');
-      setUserName(''); // Clear the user name after submitting
-    } catch (error) {
-      console.error('Error adding comment: ', error);
-    }
-  };
-  
-  useEffect(() => {
-    const fetchComments = async () => {
-      const db = getFirestore();
-      const commentsRef = collection(db, 'comments');
-      const q = query(commentsRef, orderBy('timestamp', 'desc'));
-
-      unsubscribe = onSnapshot(q, (snapshot) => {
-        const commentsData = [];
-        snapshot.forEach((doc) => {
-          commentsData.push({ id: doc.id, ...doc.data() });
-        });
-        setComments(commentsData);
-      });
-    };
-
-    fetchComments();
-
-    return () => {
-      if (unsubscribe instanceof Function) {
-        unsubscribe();
-      }
-    };
-  }, []);
-
-  const fetchComments = async () => {
-    const db = getFirestore();
-    const commentsRef = collection(db, 'comments');
-    const q = query(commentsRef, where('userId', '==', userId), orderBy('timestamp', 'desc'));
-  
-    unsubscribe = onSnapshot(q, (snapshot) => {
-      const commentsData = [];
-      snapshot.forEach((doc) => {
-        commentsData.push({ id: doc.id, ...doc.data() });
-      });
-      setComments(commentsData);
-    });
-  };
   
 
 
@@ -138,23 +164,21 @@ const Profile = ({ user }) => {
       </div>
       <br />
       <br />
-      <div>
-{comments
-  .filter((commentData) => commentData.userId === commentData.userId)
-  .map((commentData) => (
-    <div key={commentData.id}>
-      <p>
-        <strong>{commentData.userName}: </strong>
-        <br />
-        {commentData.commentText}
-      </p>
-    </div>
-  ))}
-        </div>
+      {/* <div>
+        {comments.map((commentData) => (
+          <div key={commentData.id}>
+            <p>
+              <strong>{commentData.userName}: </strong>
+              <br />
+              {commentData.commentText}
+            </p>
+          </div>
+        ))}
+      </div> */}
         <br />
         <br />
         {/* New form for adding comments */}
-        <div class="max-w-2xl  px-4">
+        {/* <div class="max-w-2xl  px-4">
           <div class="flex justify-between items-center mb-6">
             <h2 class="text-lg lg:text-2xl font-bold text-gray-900 dark:text-white">
               Add a comment
@@ -170,7 +194,7 @@ const Profile = ({ user }) => {
                   placeholder=" " required />
                   <label for="floating_email" class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Your Name</label>
               </div>
-          <form class="mb-6" onSubmit={(event) => handleSubmitComment(event)}>
+              <form class="mb-6" onSubmit={(event) => handleSubmitComment(event)}>
           <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 dark:bg-gray-800 dark:border-gray-700">
             <textarea
               value={comment}
@@ -183,13 +207,14 @@ const Profile = ({ user }) => {
             ></textarea>
           </div>
           <button
-            type="submit"
-            class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-500 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-600"
-          >
-            Post comment
-          </button>
+    type="submit"
+    class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-500 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-600"
+  >
+    Post comment
+  </button>
+
           </form>
-        </div>
+        </div> */}
       <Link to='/build-masters-hub'>
               <a href="#" className="inline-block">
               <button class="w-40 h-12 bg-white cursor-pointer rounded-3xl border-2 border-[#9748FF] shadow-[inset_0px_-2px_0px_1px_#9748FF] group hover:bg-[#9748FF] transition duration-300 ease-in-out">

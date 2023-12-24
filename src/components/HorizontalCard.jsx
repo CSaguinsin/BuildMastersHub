@@ -15,37 +15,35 @@ import foremen from '../assets/Icons/foreman.png';
 import construction from '../assets/Icons/construction.png';
 import Loading from '../components/Loading';
 import { db } from "../config/firebase";
+import { getDocs, collection } from "firebase/firestore";
+
 
 const HorizontalCard = () => {
+  // data from Firestore
+  const [peopleData, setPeopleData] = useState([]);
+  const peopleCollectionRef = collection(db, "peopleData");
+
+  useEffect(() => {
+      const getPeopleData = async () => {
+        try {
+          const data = await getDocs( peopleCollectionRef);
+          const filteredData = data.docs.map((doc) => ({
+            ...doc.data(),
+            id: doc.id
+          }));
+          setPeopleData(filteredData);
+        } catch (error) {
+          console.log(error);
+        }
+    }
+
+    getPeopleData();
+  }, [])
+  // end
+
+
   const navigate = useNavigate();
   const [loggingOut, setLoggingOut] = useState(false);
-  const [peopleData] = useState([
-    {
-      id: 1,
-      name: 'Celline Correo',
-      contact: '...',
-      job: 'Foreman',
-    },
-    {
-      id: 2,
-      name: 'Carl Saguinsin',
-      contact: '...',
-      job: 'Foreman',
-    },
-    {
-      id: 3,
-      name: 'Jb Guinabo',
-      contact: '...',
-      job: 'Construction Worker',
-    },
-    {
-      id: 4,
-      name: 'Cedrick Selerio',
-      contact: '...',
-      job: 'Construction Worker',
-    },
-    
-  ]);
 
   const handleLogout = () => {
     setLoggingOut(true);
