@@ -26,27 +26,29 @@ const AboutUs = (props) => {
   return (
     <>
           <Navbar />
-      <section className='Section'>
-            <div className="container">
-                <div className="left">
-                  <h1 className='About'>About Us</h1>
-                  <h1 className='Second_Title'>{props.title}</h1>
-                  <p className='text'>{props.text}</p>
-                </div>
-                <div className="right">
-                  <img src={Graphic_Design_2} alt="Graphic Design" className='Graphic'/>
-                </div>
+          <section className=''>
+          <div className="container px-6 py-12 mx-auto flex flex-col lg:flex-row">
+          <div className="lg:w-1/2">
+            <div className="text-center lg:text-left">
+              <h1 className='About'>About Us</h1>
+              <h1 className='Second_Title lg:text-left md:text-left'>{props.title}</h1>
+              <p className='text'>{props.text}</p>
             </div>
+          </div>
+          <div className="lg:w-1/2">
+            <img src={Graphic_Design_2} alt="Graphic Design"className="w-full h-full rounded-lg lg:h-full"/>
+          </div>
+        </div>
       </section>
       <WhyUseThis />
 
 
       <section >
-      <div className='container'>
-          <div className='left'>
-            <img src={Graphic_Design_5} alt="Graphic Design" className='Graphic'/>
+      <div className="container px-6 py-12 mx-auto flex flex-col lg:flex-row">
+      <div className="lg:w-1/2">
+            <img src={Graphic_Design_5} alt="Graphic Design" />
           </div>
-          <div className='right'>
+          <div className=''>
             <h1 className='Second_Title'>Ensuring your complete <br ></br> satisfaction is our ultimate goal</h1>
             <p className='text'>At BuildMasterHub, we understand the importance of showcasing talent in the <br></br> construction industry. Whether you're a seasoned professional with years of experience <br></br> or a skilled artisan looking to expand your network, our platform offers a <br></br> seamless solution to exhibit your skills and expertise.</p>
             <p className='text'>Our mission is simple: to bridge the gap between talented construction professionals <br></br> and clients seeking their expertise. By creating a user-friendly and interactive space,<br></br> we aim to foster meaningful connections that benefit both parties.</p>
@@ -54,20 +56,19 @@ const AboutUs = (props) => {
       </div>
       </section>
 
-      <section>
-        <div className='container'>
-            <div className="left">
+      <section className="bg-white dark:bg-gray-900">
+        <div className="container px-6 py-12 mx-auto flex flex-col lg:flex-row">
+          <div className="lg:w-1/2">
             <h1 className='About'>{props.meet}</h1>
-                      <h1 className='Second_Title'>{props.intro}</h1>
-                      <p className='text'>
-                      {props.paragraph}
-                      <br></br>
-                      <br ></br>
-                      It's more than a platform, it's a conduit that unites visions with the tools to materialize them. Welcome to BuildMastersHub!
-                      </p>
-            </div>
-            <div className='right'>
-            <div className="flex items-center justify-center">
+            <h1 className='Second_Title'>{props.intro}</h1>
+            <p className='text'>
+              {props.paragraph}
+              <br /><br />
+              It's more than a platform, it's a conduit that unites visions with the tools to materialize them. Welcome to BuildMastersHub!
+            </p>
+          </div>
+  <div className="lg:w-1/2 flex items-center justify-center">
+  <div className="flex items-center justify-center">
   <div className="profileCard_container relative p-10 border-2 border-dashed rounded-full border-spacing-4 border-gray-400/50">
     <button className="profile_item left-[45px] -top-[4px] absolute rounded-full bg-cover cursor-pointer border border-gray-400/50 p-[2px] active:scale-95 hover:scale-95 transition-all duration-500">
       <span className="block w-[40px] h-[40px] transition-all duration-500 rounded-full z-[2] bg-white p-1">

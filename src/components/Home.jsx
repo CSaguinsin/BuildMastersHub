@@ -25,14 +25,14 @@ const Home = (props) => {
     <>
       <Navbar />
       <section className="container px-6 py-12 mx-auto">
-        <div className='container px-6 py-12 mx-auto '>
+      <div className="container px-6 py-12 mx-auto flex flex-col lg:flex-row">
           <div className='flex flex-col-reverse lg:flex-row items-center justify-between'>
             <div className={`lg:w-1/2 ${animate ? 'animate' : ''}`}>
               <div className={`reveal ${animate ? 'slide-in' : ''}`}>
-                <h1 className="Title">{props.name}</h1>
+                <h1 className="Title lg:text-left md:text-left">{props.name}</h1>
                 <p className='text text-center sm:text-left'>{props.paragraph}</p>
                 <Link to='/login'>
-                  <button className="w-40 h-12 bg-white cursor-pointer rounded-3xl border-2 border-[#9748FF] shadow-[inset_0px_-2px_0px_1px_#9748FF] group hover:bg-[#9748FF] transition duration-300 ease-in-out">
+                  <button className=" w-40 h-12 bg-white cursor-pointer rounded-3xl border-2 border-[#9748FF] shadow-[inset_0px_-2px_0px_1px_#9748FF] group hover:bg-[#9748FF] transition duration-300 ease-in-out">
                     <span className="font-medium text-[#333] group-hover:text-white">Start Now</span>
                   </button>
                 </Link>
@@ -42,7 +42,7 @@ const Home = (props) => {
               <img
                 src={Graphic_Design}
                 alt="Graphic Design"
-                className='object-cover w-full h-full rounded-lg lg:h-96'
+                className="object-cover w-full h-64 rounded-lg lg:h-96"
               />
             </div>
           </div>

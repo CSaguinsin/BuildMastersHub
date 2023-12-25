@@ -26,7 +26,13 @@
   .Title {
     font-size: 35px; /* Adjust this size as needed for smaller screens */
   }
+  .Second_Title {
+    font-size: 25px; /* Adjust this size as needed for smaller screens */
+    text-align: center;
+  }
 }
+
+
 
 .Second_Title {
     font-size: 40px;
@@ -55,7 +61,6 @@
 
 .About {
     font-family: 'Chakra Petch', sans-serif;
-    padding-top: 5rem;
 }
 
 .donationtitle {

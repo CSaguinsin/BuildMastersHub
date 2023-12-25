@@ -24,7 +24,7 @@ function Navbar() {
             <div className="flex items-center justify-between h-16">
               {/* Logo */}
               <img
-                className="h-40 w-auto"
+                className="sm:w-35 h-40 md:w-40 lg:w-40 xl:w-40 2xl:w-40 "
                 src={LightModeLogo}
                 alt="Your Company"
               />
