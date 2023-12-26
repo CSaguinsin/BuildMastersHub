@@ -5,8 +5,6 @@ import AboutUs from './components/AboutUs.jsx'
 import BuildMastersHub from './components/BuildMastersHub.jsx'
 import Navbar from './components/Navbar.jsx';
 import Profile from './components/profile/Profile.jsx';
-import LogIn from './components/LogIn.jsx';
-import SignUp from './components/SignUp.jsx';
 import ContactUs from './components/ContactUs.jsx';
 import Log from './components/Log.jsx';
 import Donate from './components/Donate.jsx';

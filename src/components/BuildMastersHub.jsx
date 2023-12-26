@@ -174,9 +174,11 @@ const BuildMastersHub = () => {
   </div>
 </aside> */}
 
-    <SearchBar />
+    <div className="flex flex-col w-full h-screen overflow-y-hidden">
     <br></br>
     <HorizontalCard />
+    <br></br>
+    </div>
     </>
   )
 }

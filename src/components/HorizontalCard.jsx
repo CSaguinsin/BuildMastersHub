@@ -19,6 +19,7 @@ import { getDocs, collection } from "firebase/firestore";
 
 
 const HorizontalCard = () => {
+  const [showSidebar, setShowSidebar] = useState(false);
   // data from Firestore
   const [peopleData, setPeopleData] = useState([]);
   const peopleCollectionRef = collection(db, "peopleData");
@@ -40,6 +41,16 @@ const HorizontalCard = () => {
     getPeopleData();
   }, [])
   // end
+
+ 
+  const handleToggleSidebar = () => {
+    setShowSidebar(!showSidebar);
+  };
+
+  // Function to close sidebar
+  const handleCloseSidebar = () => {
+    setShowSidebar(false);
+  };
 
 
   const navigate = useNavigate();
@@ -146,13 +157,48 @@ const HorizontalCard = () => {
 
   return (
     <>
-    <aside
-  id="separator-sidebar"
-  className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0"
-  aria-label="Sidebar"
->
-  <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-    <ul className="space-y-2 font-medium">
+      {/* Burger icon for smaller screens */}
+      <div className="block sm:hidden">
+        <button onClick={handleToggleSidebar} className="text-gray-900 hover:text-gray-700 focus:outline-none">
+          {/* Burger icon */}
+          <svg
+            className="w-6 h-6"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            fill="none"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+
+      <aside
+        className={`fixed top-0 left-0 z-40 w-64 h-screen transition-transform ${
+          showSidebar ? 'translate-x-0' : '-translate-x-full'
+        } sm:translate-x-0`}
+        aria-label="Sidebar"
+      >
+<div className="block sm:hidden">
+        <button onClick={handleCloseSidebar} className="text-gray-900 hover:text-gray-700 focus:outline-none">
+          {/* Close icon */}
+          <svg
+            className="w-6 h-6"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            fill="none"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+</div>
+        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+          <ul className="space-y-2 font-medium">
         <a
           href="#"
           className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"

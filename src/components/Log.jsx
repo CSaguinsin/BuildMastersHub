@@ -51,7 +51,7 @@ const Log = () => {
 <Navbar />
   {/* TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com */}
   <section className="h-screen">
-    <div className="container h-full px-6 py-24">
+  <div className="container px-6 py-12 mx-auto flex flex-col lg:flex-row">
       <div className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
         {/* Left column container with background*/}
         <div className="mb-12 md:mb-0 md:w-8/12 lg:w-6/12">
