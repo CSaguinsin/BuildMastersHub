@@ -11,7 +11,7 @@ import {
   onSnapshot,
 } from 'firebase/firestore';
 import NoPic from '../../assets/logo/no_pic.jpg';
-import '../../Style.css';
+
 import imageholderf from '../../assets/Graphic/imageplaceholder.png';
 import {
   collection as firestoreCollection,
@@ -121,7 +121,9 @@ const Profile = ({ user, profileUserId }) => {
 
   return (
     <>
-    <div className='profile'>
+<section className="container px-6 py-12 mx-auto">
+<div className="container px-6 py-12 mx-auto flex flex-col lg:flex-row">
+<div className="lg:w-1/2">
       <div className="px-4 sm:px-0">
         <img src={NoPic} className='nopic'/>
       </div>
@@ -154,16 +156,17 @@ const Profile = ({ user, profileUserId }) => {
         </dl>
       </div>
       <h1>Works</h1>
-      <div className='imageholder'>
-          {[1, 2, 3].map((index) => (
+    <div className='imageholder container px-6 py-12 mx-auto flex flex-col lg:flex-row'>
+      {[1, 2, 3].map((index) => (
         <React.Fragment key={index}>
-          <img src={imageholderf} className='imageholderf'/>
-          <br />
+          <img
+            src={imageholderf}
+            className='imageholderf'
+            style={{ marginRight: '10px' }} // Adjust the margin value as needed
+          />
         </React.Fragment>
       ))}
-      </div>
-      <br />
-      <br />
+    </div>
       {/* <div>
         {comments.map((commentData) => (
           <div key={commentData.id}>
@@ -175,8 +178,6 @@ const Profile = ({ user, profileUserId }) => {
           </div>
         ))}
       </div> */}
-        <br />
-        <br />
         {/* New form for adding comments */}
         {/* <div class="max-w-2xl  px-4">
           <div class="flex justify-between items-center mb-6">
@@ -223,7 +224,8 @@ const Profile = ({ user, profileUserId }) => {
               </a>
       </Link>
     </div>
-    
+    </div>
+</section>
     </>
   )
 }
