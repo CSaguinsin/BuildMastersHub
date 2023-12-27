@@ -126,7 +126,11 @@ const HorizontalCard = () => {
             <Typography variant="h10" color="gray" className="mb-4 uppercase">
               Job: {person.job}
             </Typography>
-            <Link to='/profile'>
+            <Typography variant="h10" color="gray" className="mb-4 uppercase">
+              Address: {person.address}
+            </Typography>
+            
+            {/* <Link to='/profile'>
               <a href="#" className="inline-block">
                 <Button variant="text" className="flex items-center gap-2">
                   Learn More
@@ -146,7 +150,7 @@ const HorizontalCard = () => {
                   </svg>
                 </Button>
               </a>
-            </Link>
+            </Link> */}
           </CardBody>
         </Card>
       </div>
@@ -174,29 +178,30 @@ const HorizontalCard = () => {
           </svg>
         </button>
       </div>
-
       <aside
-        className={`fixed top-0 left-0 z-40 w-64 h-screen transition-transform ${
-          showSidebar ? 'translate-x-0' : '-translate-x-full'
-        } sm:translate-x-0`}
-        aria-label="Sidebar"
-      >
-<div className="block sm:hidden">
-        <button onClick={handleCloseSidebar} className="text-gray-900 hover:text-gray-700 focus:outline-none">
-          {/* Close icon */}
-          <svg
-            className="w-6 h-6"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            fill="none"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <path d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-</div>
+  className={`fixed top-0 left-0 z-40 w-64 h-screen transition-transform ${
+    showSidebar ? 'translate-x-0' : '-translate-x-full'
+  } sm:translate-x-0`}
+  aria-label="Sidebar"
+  style={{ maxHeight: '100vh' }}
+>
+  <div className="h-full overflow-y-auto px-3 py-4 bg-gray-50 dark:bg-gray-800">
+    <div className="block sm:hidden">
+      {/* Close button */}
+      <button onClick={handleCloseSidebar} className="text-gray-900 hover:text-gray-700 focus:outline-none">
+        <svg
+          className="w-6 h-6"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          fill="none"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
         <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
         <a
@@ -324,6 +329,7 @@ const HorizontalCard = () => {
         </a>
       </Link>
     </ul>
+  </div>
   </div>
 </aside>
 
