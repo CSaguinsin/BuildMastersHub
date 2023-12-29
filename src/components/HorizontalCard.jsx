@@ -16,6 +16,7 @@ import construction from '../assets/Icons/construction.png';
 import Loading from '../components/Loading';
 import { db } from "../config/firebase";
 import { getDocs, collection } from "firebase/firestore";
+import Welcome from '../assets/Graphic/Welcome-cuate.png';
 
 
 const HorizontalCard = () => {
@@ -198,7 +199,7 @@ const HorizontalCard = () => {
                   Address:
                 </Typography>
                 
-                <Link to='/parent'>
+                <Link to='/firstconstruction'>
                   <a href="#" className="inline-block">
                     <Button variant="text" className="flex items-center gap-2">
                       Learn More
@@ -397,6 +398,12 @@ const HorizontalCard = () => {
   </div>
   </div>
 </aside>
+
+<div class="flex justify-center items-center sm:pl-10">
+  <img class=" h-auto w-80" src={Welcome} alt="Welcome Image" />
+</div>
+
+
 
 {foremanCard}
 {constructionCard}

@@ -9,7 +9,8 @@ import ContactUs from './components/ContactUs.jsx';
 import Log from './components/Log.jsx';
 import Donate from './components/Donate.jsx';
 import SignIn from './components/SignIn.jsx';
-import ParentComponent from './components/profile/ParentComponent.jsx';
+import FirstForman from './components/profile/FirstForeman.jsx';
+import FirstConstruction from './components/profile/FirstConstruction.jsx';
 
 const App = () => {
   return (
@@ -23,7 +24,8 @@ const App = () => {
         <Route path="/signup" element={<Log />} />
         <Route path="/contact-us" element={<ContactUs />} />
         <Route path="/donate" element={<Donate />} />
-        <Route path="/parent" element={<ParentComponent />} />
+        <Route path="/parent" element={<FirstForman />} />
+        <Route path="/firstconstruction" element={<FirstConstruction />} />
       </Routes>
     </>
   )

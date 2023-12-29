@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 import NoPic from '../../assets/logo/no_pic.jpg';
-import ParentComponent from './ParentComponent';
+import ParentComponent from './FirstForeman';
 import imageholderf from '../../assets/Graphic/imageplaceholder.png';
 import {
   collection as firestoreCollection,
