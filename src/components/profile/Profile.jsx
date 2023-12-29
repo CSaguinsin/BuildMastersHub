@@ -1,17 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  getFirestore,
-  collection,
-  addDoc,
-  Timestamp,
-  query,
-  where,
-  orderBy,
-  onSnapshot,
-} from 'firebase/firestore';
+import { getFirestore, collection, query, where, getDocs } from 'firebase/firestore';
 import NoPic from '../../assets/logo/no_pic.jpg';
-
+import ParentComponent from './ParentComponent';
 import imageholderf from '../../assets/Graphic/imageplaceholder.png';
 import {
   collection as firestoreCollection,
@@ -24,7 +15,39 @@ import {
 } from 'firebase/firestore';
 
 
-const Profile = ({ user, profileUserId }) => {
+const Profile = ({ name }) => {
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+    console.log('ProfileUserId:', name); // Check profileUserId value
+  
+    const fetchUserData = async () => {
+      console.log('Fetching user data...');
+      const db = getFirestore();
+      const peopleRef = collection(db, 'peopleData');
+      const q = query(peopleRef, where('name', '==', name));
+  
+      try {
+        const querySnapshot = await getDocs(q);
+        if (!querySnapshot.empty) {
+          querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            console.log('Fetched user data:', data); // Log the fetched data
+            setUserData(data); // Set the fetched data to state
+          });
+        } else {
+          console.log('No data found for the provided profileUserId:', name);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+  
+    if (name) {
+      fetchUserData();
+    }
+  }, [name]);
+  
   // const [comment, setComment] = useState('');
   // const [userName, setUserName] = useState('');
   // const [comments, setComments] = useState([]);
@@ -116,11 +139,13 @@ const Profile = ({ user, profileUserId }) => {
   //   };
   // }, [user]);
   
+
   
 
 
   return (
     <>
+           
 <section className="container px-6 py-12 mx-auto">
 <div className="container px-6 py-12 mx-auto flex flex-col lg:flex-row">
 <div className="lg:w-1/2">
@@ -128,31 +153,41 @@ const Profile = ({ user, profileUserId }) => {
         <img src={NoPic} className='nopic'/>
       </div>
       <div className="mt-6 border-t border-gray-100">
-        <dl className="divide-y divide-gray-100">
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">Full name</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"></dd>
-          </div>
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">Job</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"></dd>
-          </div>
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">Home Address</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"></dd>
-          </div>
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-gray-900">Contact Number</dt>
-            <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"></dd>
-          </div>
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+      <dl className="divide-y divide-gray-100">
+  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+    <dt className="text-sm font-medium leading-6 text-gray-900">Full name</dt>
+    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+      {userData?.name || 'Loading...'}
+    </dd>
+  </div>
+  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+    <dt className="text-sm font-medium leading-6 text-gray-900">Job</dt>
+    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+      {userData?.job || 'Loading...'}
+    </dd>
+  </div>
+  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+    <dt className="text-sm font-medium leading-6 text-gray-900">Address</dt>
+    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+      {userData?.address || 'Loading...'}
+    </dd>
+  </div>
+  <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+    <dt className="text-sm font-medium leading-6 text-gray-900">Contact</dt>
+    <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
+      {userData?.contact || 'Loading...'}
+    </dd>
+  </div>
+
+
+          {/* <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-gray-900">About</dt>
             <dd className="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">
               Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur
               qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud
               pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
             </dd>
-          </div> 
+          </div>  */}
         </dl>
       </div>
       <h1>Works</h1>
