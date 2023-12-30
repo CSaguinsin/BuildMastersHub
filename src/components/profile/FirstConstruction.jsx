@@ -1,16 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Profile from './Profile';
-import {
-  collection as firestoreCollection,
-  addDoc as firestoreAddDoc,
-  serverTimestamp as firestoreTimestamp,
-  query as firestoreQuery,
-  where as firestoreWhere,
-  orderBy as firestoreOrderBy,
-  onSnapshot as firestoreOnSnapshot, // Aliasing onSnapshot to firestoreOnSnapshot
-} from 'firebase/firestore';
 import { getFirestore, collection, addDoc, getDocs } from 'firebase/firestore'; // Import Firestore functions
-
+import Card from '@mui/joy/Card';
+import Typography from '@mui/joy/Typography';
 const FirstConstruction = () => {
   const [comments, setComments] = useState([]);
   const [userName, setUserName] = useState('');
@@ -88,16 +80,17 @@ const handleCommentChange = (event) => {
       {/* Display existing comments */}
       <section className="flex flex-col items-center">
       <div className="max-w-2xl w-full px-4">
-        {comments.map((commentData) => (
-          <div key={commentData.id}>
-            <p>
-              <strong>{commentData.userName}: </strong>
-              <br />
-              {commentData.commentText}
-            </p>
-          </div>
-        ))}
-      </div>
+  {comments.map((commentData) => (
+    <Card key={commentData.id} variant="outlined" sx={{ mb: '10px' }}>
+      <Typography level="h2" fontSize="xl" sx={{ mb: 0.5 }}>
+        {commentData.userName}
+      </Typography>
+      <Typography>
+        {commentData.commentText}
+      </Typography>
+    </Card>
+  ))}
+</div>
         {/* New form for adding comments */}
         <div className="max-w-2xl w-full px-4 mt-6">
           <div class="flex justify-between items-center mb-6">
