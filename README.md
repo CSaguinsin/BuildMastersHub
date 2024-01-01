@@ -13,7 +13,7 @@
 *  BuildMasterHub aims to bridge the gap between talent and opportunity within the construction realm, fostering a collaborative ecosystem where craftsmanship meets demand. By leveraging technology to streamline the process of showcasing skills and networking, this platform aspires to redefine how professionals in the construction field interact, collaborate, and thrive in a competitive market.
 *  This web app is created using the latest technologies React javascript and TailwindCSS and on the backend is Firebase
 ## Features 🚀
-- You can search Foremen and Construction workers by the search tab and also see there profile and works
+- Can write a feedback/comment on the profile of the worker.
 * Clients can also see the Name, Location and the Description of the professional
   
 ## Support 🙏
