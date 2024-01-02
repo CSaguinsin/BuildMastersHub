@@ -156,7 +156,7 @@ const SignIn = () => {
                 role="button"
                 data-te-ripple-init=""
                 data-te-ripple-color="light"
-                // onClick={handleGoogleSignIn} // Attach onClick event
+                onClick={handleGoogleSignIn} // Attach onClick event
               >
                 {/* Google Icon */}
                 <img

@@ -1,52 +1,77 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import Navbar from '../components/Navbar';
-import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth'; // Fixed import
-import { auth, googleProvider } from '../config/firebase';
-import { useCreateUserWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import '../Style.css';
+import React, { useState, useEffect } from 'react';
+import { createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { auth } from '../config/firebase';
 import BuildMastersHub from '../components/BuildMastersHub';
+import { onAuthStateChanged } from 'firebase/auth';
 import Loading from '../components/Loading';
 import Error from '../components/Error';
 import Registration from '../assets/Graphic/registration.png';
-import Google from '../assets/Icons/google.png'
-
-import {
-  Input,
-  Ripple,
-  initTE,
-} from "tw-elements";
-
-initTE({ Input, Ripple });
+import Google from '../assets/Icons/google.png';
+import Navbar from '../components/Navbar';
 
 const Log = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const signInWithGoogle = async () => {
-    await signInWithPopup(auth, googleProvider) 
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+  const [user, setUser] = useState(null);
+
+  const handleSignInWithGoogle = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      setLoading(true);
+      await signInWithPopup(auth, provider);
+      // No need for explicit redirection here as the auth state observer will handle it
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
-  const [
-    createUserWithEmailAndPassword,
-    user,
-    loading,
-    error,
-  ] = useCreateUserWithEmailAndPassword(auth);
+
+  const handleEmailSignIn = async (e) => {
+    e.preventDefault(); // Prevent default form submission
+    try {
+      setLoading(true);
+      await createUserWithEmailAndPassword(auth, email, password);
+      // No need for explicit redirection here as the auth state observer will handle it
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (error) {
-    return (
-      <Error />
-    );
+    return <Error />;
   }
+
   if (loading) {
-    return (
-      <Loading />
-    );
+    return <Loading />;
   }
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, update the user state
+        setUser(user);
+      } else {
+        // User is signed out, set user state to null
+        setUser(null);
+      }
+    });
+
+    return () => {
+      // Unsubscribe from the observer when the component unmounts
+      unsubscribe();
+    };
+  }, []);
+
   if (user) {
-    return (
-        <BuildMastersHub />
-    );
+    // Redirect to BuildMastersHub if user is authenticated
+    return <BuildMastersHub />;
   }
+
   return (
 <>
 <Navbar />
@@ -64,7 +89,7 @@ const Log = () => {
         </div>
         {/* Right column container with form */}
         <div className="md:w-8/12 lg:ml-6 lg:w-5/12">
-          <form>
+        <form onSubmit={handleEmailSignIn}>
             {/* Email input */}
             <div className="relative z-0 w-full mb-5 group">
               <input
@@ -155,7 +180,7 @@ const Log = () => {
               role="button"
               data-te-ripple-init=""
               data-te-ripple-color="light"
-              onClick={signInWithGoogle} // Update to signInWithGoogle
+              onClick={handleSignInWithGoogle}
             >
               {/* Google Icon */}
               <img
