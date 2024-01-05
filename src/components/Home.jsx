@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-
+import Links from './Links.jsx'
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar.jsx';
 import Footer from '../components/Footer.jsx';
 import Graphic_Design from '../assets/Graphic/Graphic_Design.png';
+
 
 const Parent = () => {
   const name = "Welcome to BuildMastersHub!";
@@ -48,6 +49,7 @@ const Home = (props) => {
           </div>
         </div>
       </section>
+
       <Footer />
     </>
   );
