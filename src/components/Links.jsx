@@ -1,6 +1,5 @@
 import React from "react";
 import {Link} from "@nextui-org/react";
-
 import {AnchorIcon} from "./AnchorIcon";
 
 
@@ -8,12 +7,13 @@ import {AnchorIcon} from "./AnchorIcon";
 const Links = () => {
   return (
     <Link
-      isExternal
-      showAnchorIcon
-      href="https://buildmastershub-form.vercel.app/"
+    isBlock showAnchorIcon
+    color="success"
+      href="https://carl-saginsin-portfolio.vercel.app/"
+      target="_blank"
       anchorIcon={<AnchorIcon />}
     >
-      Apply Here
+      Learn More about me!
     </Link>
   )
 }

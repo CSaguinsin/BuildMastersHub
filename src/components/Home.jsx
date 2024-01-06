@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import Navbar from './Navbar.jsx';
 import Footer from '../components/Footer.jsx';
 import Graphic_Design from '../assets/Graphic/Graphic_Design.png';
+import Apply from '../assets/Graphic/apply.png';
+import Linkss from './Links.jsx';
 
 
 const Parent = () => {
@@ -49,6 +51,28 @@ const Home = (props) => {
           </div>
         </div>
       </section>
+
+      <section>
+            <div className="container px-6 py-12 mx-auto flex flex-col lg:flex-row">
+                <div className="lg:w-1/2">                
+                    <img src={Apply} alt="Apply" className="object-cover w-full h-64 rounded-lg lg:h-96" />              
+                </div>  
+
+                <div className="lg:w-1/2">
+                <h1 className="Title lg:text-left md:text-left">Apply Now!</h1>
+                 <p className='text text-center sm:text-left'>
+Ang BuildMasterHub ay naglalayong magsama ng mga kasanayan at oportunidad sa konstruksiyon sa pamamagitan ng teknolohiya. Sa kanilang plataporma, mas madaling makikilala at makahanap ng kliyente ang iyong serbisyo, na nagbubukas ng mga oportunidad para sa iyong negosyo sa industriya. Ang kanilang malawak na network at prestihiyosong platform ay magbibigay-daan sa iyo upang mapalawak ang iyong kita at magtagumpay bilang propesyonal sa larangan ng konstruksiyon.</p>
+                  <Link to="https://buildmastershub-form.vercel.app/" target='_blank'>
+                  <button className=" w-40 h-12 bg-white cursor-pointer rounded-3xl border-2 border-[#9748FF] shadow-[inset_0px_-2px_0px_1px_#9748FF] group hover:bg-[#9748FF] transition duration-300 ease-in-out">
+                    <span className="font-medium text-[#333] group-hover:text-white">Apply Here</span>
+                  </button>
+                </Link>
+                </div>
+            </div>
+            
+      </section>
+
+      
 
       <Footer />
     </>

@@ -10,7 +10,7 @@ import WhyUseThis from '../components/WhyUseThis'
 import Navbar from './Navbar.jsx'
 import Me from '../assets/logo/Me.jpg'
 import Footer from '../components/Footer.jsx'
-
+import Linkss from './Links.jsx'
 const Things = () => {
   const title = "Welcome to BuildMastersHub,\nthe innovative web app connecting construction professionals with clients!";
   const text = "At BuildMasterHub, we understand the importance of showcasing talent in the construction industry. Whether you're a seasoned professional with years of experience or a skilled artisan looking to expand your network, our platform offers a seamless solution to exhibit your skills and expertise.\nOur mission is simple: to bridge the gap between talented construction professionals and clients seeking their expertise. By creating a user-friendly and interactive space, we aim to foster meaningful connections that benefit both parties.";
@@ -65,6 +65,7 @@ const AboutUs = (props) => {
               {props.paragraph}
               <br /><br />
               It's more than a platform, it's a conduit that unites visions with the tools to materialize them. Welcome to BuildMastersHub!
+              <Linkss />
             </p>
           </div>
   <div className="lg:w-1/2 flex items-center justify-center">

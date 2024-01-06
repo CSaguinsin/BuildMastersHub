@@ -9,7 +9,6 @@ const navigation = [
   { name: 'Home', href: '/', current: false },
   { name: 'About', href: '/about-us', current: false },
   { name: 'Contact Us', href: '/contact-us', current: false },
-  { name: 'Register Here (Magparehistro dito)', href: 'https://buildmastershub-form.vercel.app/', target: "_blank", current: false },
 ]
 
 function classNames(...classes) {

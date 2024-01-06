@@ -7,6 +7,7 @@ export const AnchorIcon = (props) => (
     role="presentation"
     viewBox="0 0 24 24"
     width="24"
+    color="success"
     {...props}
   >
     <path
