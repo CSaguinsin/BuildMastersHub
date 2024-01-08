@@ -19,6 +19,9 @@ import { getDocs, collection } from "firebase/firestore";
 import Welcome from '../assets/Graphic/Welcome-cuate.png';
 import Sidebar from "./Sidebar";
 import Me from '../assets/logo/Me.jpg';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { storage } from '../config/firebase'; // Ensure you import your Firebase Storage instance properly
+
 
 
 const HorizontalCard = () => {
@@ -28,23 +31,36 @@ const HorizontalCard = () => {
   const peopleCollectionRef = collection(db, "peopleData");
 
   useEffect(() => {
-      const getPeopleData = async () => {
-        try {
-          const data = await getDocs( peopleCollectionRef);
-          const filteredData = data.docs.map((doc) => ({
-            ...doc.data(),
-            id: doc.id
-          }));
-          setPeopleData(filteredData);
-        } catch (error) {
-          console.log(error);
-        }
-    }
-
+    const getPeopleData = async () => {
+      try {
+        const data = await getDocs(peopleCollectionRef);
+        const filteredData = data.docs.map(async (doc) => {
+          const personData = doc.data();
+          const imageRef = ref(storage, personData.profilePictureRef);
+  
+          try {
+            const imageUrl = await getDownloadURL(imageRef);
+            return { ...personData, id: doc.id, profilePictureURL: imageUrl };
+          } catch (error) {
+            console.error("Error fetching image URL:", error);
+            // If there's an error fetching the image URL, return the personData without profilePictureURL
+            return { ...personData, id: doc.id };
+          }
+        });
+  
+        // Wait for all image URLs to be fetched before setting the state
+        const updatedData = await Promise.all(filteredData);
+        setPeopleData(updatedData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  
     getPeopleData();
-  }, [])
+  }, [peopleCollectionRef, storage]);
   // end
 
+  
  
   const handleToggleSidebar = () => {
     setShowSidebar(!showSidebar);
@@ -135,11 +151,11 @@ const HorizontalCard = () => {
               floated={false}
               className="m-0 w-2/5 shrink-0 rounded-r-none"
             >
-              <img
-                src={NoPic}
-                alt="card-image"
-                className="NoPic"
-              />
+            <img
+              src={person.profilePictureURL || NoPic} // Use the fetched URL or fallback to the default image
+              alt="card-image"
+              className="NoPic"
+            />
             </CardHeader>
             <CardBody>
               <Typography variant="h10" color="gray" className="mb-4 uppercase">
