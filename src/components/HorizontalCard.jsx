@@ -18,6 +18,7 @@ import { db } from "../config/firebase";
 import { getDocs, collection } from "firebase/firestore";
 import Welcome from '../assets/Graphic/Welcome-cuate.png';
 import Sidebar from "./Sidebar";
+import Me from '../assets/logo/Me.jpg';
 
 
 const HorizontalCard = () => {
@@ -116,119 +117,77 @@ const HorizontalCard = () => {
     }
   };
 
-  const foremanPerson = peopleData.find((person) => person.job === 'Foreman');  
-  const foremanCard = showForemen && (
-    <div key={foremanPerson.id} className="flex justify-center items-center h-full">
-      <Card className="w-full max-w-[48rem] flex-row">
-      <CardHeader
-                shadow={false}
-                floated={false}
-                className="m-0 w-2/5 shrink-0 rounded-r-none"
-              >
-                <img
-                  src={NoPic}
-                  alt="card-image"
-                  className="NoPic"
-                />
-              </CardHeader>
-              <CardBody>
-                <Typography variant="h10" color="gray" className="mb-4 uppercase">
-                  Name: Carl
-                </Typography>
-                <Typography variant="h10" color="gray" className="mb-4 uppercase">
-                  Contact: 
-                </Typography>
-                <Typography variant="h10" color="gray" className="mb-4 uppercase">
-                  Job: 
-                </Typography>
-                <Typography variant="h10" color="gray" className="mb-4 uppercase">
-                  Address:
-                </Typography>
-                
-                <Link to='/parent'>
-                  <a href="#" className="inline-block">
-                    <Button variant="text" className="flex items-center gap-2">
-                      Learn More
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                        className="h-4 w-4"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                        />
-                      </svg>
-                    </Button>
-                  </a>
-                </Link>
-              </CardBody>
-      </Card>
-    </div>
-  );  
+  const handleLearnMore = (personId) => {
+    // Handle navigation to the specific profile based on the clicked person's ID
+    // Example: navigate to '/profile/${personId}'
+    console.log(`Navigate to profile of person with ID ${personId}`);
+  };
 
-  const constructionPerson = peopleData.find((person) => person.job === 'Construction Worker');
-  const constructionCard = showConstructionWorkers && (
-    <div key={constructionPerson.id} className="flex justify-center items-center h-full">
-      <Card className="w-full max-w-[48rem] flex-row">
-      <CardHeader
-                shadow={false}
-                floated={false}
-                className="m-0 w-2/5 shrink-0 rounded-r-none"
-              >
-                <img
-                  src={NoPic}
-                  alt="card-image"
-                  className="NoPic"
-                />
-              </CardHeader>
-              <CardBody>
-                <Typography variant="h10" color="gray" className="mb-4 uppercase">
-                  Name: Celline
-                </Typography>
-                <Typography variant="h10" color="gray" className="mb-4 uppercase">
-                  Contact: 
-                </Typography>
-                <Typography variant="h10" color="gray" className="mb-4 uppercase">
-                  Job: 
-                </Typography>
-                <Typography variant="h10" color="gray" className="mb-4 uppercase">
-                  Address:
-                </Typography>
-                
-                <Link to='/firstconstruction'>
-                  <a href="#" className="inline-block">
-                    <Button variant="text" className="flex items-center gap-2">
-                      Learn More
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                        className="h-4 w-4"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                        />
-                      </svg>
-                    </Button>
-                  </a>
-                </Link>
-              </CardBody>
-      </Card>
-    </div>
-  );  
+  const renderedCards = peopleData.map((person) => {
+    const job = person.job;
+
+    if ((job === 'Foreman' && showForemen) || (job === 'Construction Worker' && showConstructionWorkers)) {
+      return (
+        <div key={person.id} className="flex justify-center items-center h-full">
+          <Card className="w-full max-w-[48rem] flex-row">
+            <CardHeader
+              shadow={false}
+              floated={false}
+              className="m-0 w-2/5 shrink-0 rounded-r-none"
+            >
+              <img
+                src={NoPic}
+                alt="card-image"
+                className="NoPic"
+              />
+            </CardHeader>
+            <CardBody>
+              <Typography variant="h10" color="gray" className="mb-4 uppercase">
+                Name: {person.name}
+              </Typography>
+              <Typography variant="h10" color="gray" className="mb-4 uppercase">
+                Contact: {person.contact}
+              </Typography>
+              <Typography variant="h10" color="gray" className="mb-4 uppercase">
+                Job: {person.job}
+              </Typography>
+              <Typography variant="h10" color="gray" className="mb-4 uppercase">
+                Address: {person.address}
+              </Typography>
+              {/* Other details */}
+              <Link to={`/profile/${person.name.replace(/\s+/g, '-')}`}>
+          <a href="#" className="inline-block" onClick={() => handleLearnMore(person.name)}>
+                  <Button variant="text" className="flex items-center gap-2">
+                    Learn More
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                      className="h-4 w-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                      />
+                    </svg>
+                  </Button>
+                </a>
+              </Link>
+            </CardBody>
+          </Card>
+        </div>
+      );
+    }
+
+    return null;
+  });
 
   return (
     <>
-       <Sidebar
+      <Sidebar
         showSidebar={showSidebar}
         handleToggleSidebar={handleToggleSidebar}
         handleCloseSidebar={handleCloseSidebar}
@@ -236,14 +195,11 @@ const HorizontalCard = () => {
         handleLogout={handleLogout}
       />
 
-<div class="flex justify-center items-center sm:pl-10">
-  <img class=" h-auto w-80" src={Welcome} alt="Welcome Image" />
-</div>
+      <div class="flex justify-center items-center sm:pl-10">
+        <img class=" h-auto w-80" src={Welcome} alt="Welcome Image" />
+      </div>
 
-{foremanCard}
-{constructionCard}
-
-
+      {renderedCards}
     </>
   );
 };

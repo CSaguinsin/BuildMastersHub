@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from './components/Home.jsx'
 import AboutUs from './components/AboutUs.jsx'
 import BuildMastersHub from './components/BuildMastersHub.jsx'
@@ -26,6 +26,10 @@ const App = () => {
         <Route path="/donate" element={<Donate />} />
         <Route path="/parent" element={<FirstForman />} />
         <Route path="/firstconstruction" element={<FirstConstruction />} />
+
+      {/* People routes */}
+        <Route path="/profile/:name" element={<Profile />} />
+      {/* end */}
       </Routes>
     </>
   )

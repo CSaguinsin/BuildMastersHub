@@ -59,7 +59,7 @@ const Home = (props) => {
                 </div>  
 
                 <div className="lg:w-1/2">
-                <h1 className="Title lg:text-left md:text-left">Apply Now!</h1>
+                <h1 className="Title lg:text-left md:text-left">Register Now!</h1>
                  <p className='text text-center sm:text-left'>
 Ang BuildMasterHub ay naglalayong magsama ng mga kasanayan at oportunidad sa konstruksiyon sa pamamagitan ng teknolohiya. Sa kanilang plataporma, mas madaling makikilala at makahanap ng kliyente ang iyong serbisyo, na nagbubukas ng mga oportunidad para sa iyong negosyo sa industriya. Ang kanilang malawak na network at prestihiyosong platform ay magbibigay-daan sa iyo upang mapalawak ang iyong kita at magtagumpay bilang propesyonal sa larangan ng konstruksiyon.</p>
                   <Link to="https://buildmastershub-form.vercel.app/" target='_blank'>

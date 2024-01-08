@@ -9,7 +9,7 @@ const Links = () => {
     <Link
     isBlock showAnchorIcon
     color="success"
-      href="https://carl-saginsin-portfolio.vercel.app/"
+      href="https://carlsaginsin.vercel.app/"
       target="_blank"
       anchorIcon={<AnchorIcon />}
     >
