@@ -55,7 +55,7 @@ const Home = (props) => {
       <section>
             <div className="container px-6 py-12 mx-auto flex flex-col lg:flex-row">
                 <div className="lg:w-1/2">                
-                    <img src={Apply} alt="Apply" className="object-cover w-full h-64 rounded-lg lg:h-96" />              
+                    <img src={Apply} alt="Apply" className="w-full h-full rounded-lg lg:h-full"/>             
                 </div>  
 
                 <div className="lg:w-1/2">

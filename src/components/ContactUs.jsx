@@ -48,7 +48,7 @@ const ContactUs = () => {
           Speak to our friendly team.
         </p>
         <p className="mt-2 text-sm text-blue-500 dark:text-blue-400">
-          hello@merakiui.com
+          buildmastersupport@gmail.com
         </p>
             </div>
             <div className="p-4 rounded-lg bg-blue-50 md:p-6 dark:bg-gray-800 flex flex-col items-center">
@@ -75,13 +75,13 @@ const ContactUs = () => {
               </span>
               <div className="p-4 rounded-lg bg-blue-50 md:p-6 dark:bg-gray-800 flex flex-col items-center">
               <h2 className="mt-4 text-base font-medium text-gray-800 dark:text-white">
-                Visit us
+                Message us on our socials
               </h2>
               <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
-          Visit our office HQ..
+          Don't be shy to send us a message
         </p>
         <p className="mt-2 text-sm text-blue-500 dark:text-blue-400">
-          100 Smith Street Collingwood VIC 3066 AU
+          @BuildMasterHub
         </p>
         </div>
             </div>

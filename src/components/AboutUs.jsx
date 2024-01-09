@@ -36,7 +36,7 @@ const AboutUs = (props) => {
             </div>
           </div>
           <div className="lg:w-1/2">
-            <img src={Graphic_Design_2} alt="Graphic Design"className="w-full h-full rounded-lg lg:h-full"/>
+            <img src={Graphic_Design_2} alt="Graphic Design" className="w-full h-full rounded-lg lg:h-full"/>
           </div>
         </div>
       </section>
