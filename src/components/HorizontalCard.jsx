@@ -21,6 +21,7 @@ import Sidebar from "./Sidebar";
 import Me from '../assets/logo/Me.jpg';
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { storage } from '../config/firebase'; // Ensure you import your Firebase Storage instance properly
+import Updates from '../assets/Graphic/updates.png';
 
 
 
@@ -117,6 +118,7 @@ const HorizontalCard = () => {
 
   const [showForemen, setShowForemen] = useState(false);
   const [showConstructionWorkers, setShowConstructionWorkers] = useState(false);
+  const [showUpdates, setShowUpdates] = useState(false);
 
   const handleTabClick = (job) => {
     setFilteredJob(job);
@@ -127,6 +129,9 @@ const HorizontalCard = () => {
     } else if (job === 'Construction Worker') {
       setShowForemen(false);
       setShowConstructionWorkers(true);
+    } else if (job === 'Electrician') {
+      setShowUpdates(false);
+      setShowUpdates(true);
     } else {
       setShowForemen(false);
       setShowConstructionWorkers(false);
@@ -198,8 +203,16 @@ const HorizontalCard = () => {
       );
     }
 
+    if ((job === 'Plumber' && showUpdates) || (job === 'Electrician' && showUpdates)) {
+      return (
+        <img src={Updates} alt="Updates" />
+      );
+    }
+
     return null;
   });
+
+
 
   return (
     <>
